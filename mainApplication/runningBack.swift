@@ -1,5 +1,5 @@
 
-import foundation
+import Foundation
 
 class initProbabiltyArray
 {
@@ -9,21 +9,17 @@ class initProbabiltyArray
 
   private struct playerProbabilityStat
   {
-    var probability;
-    String team; //
+    var probability: Float
+    var team: String //
   }
 
   //nfl teams stored in alphabetical order.
-  String nflTeams[32] = {"Falcons", "Patriots"} //TO DO finish all 32 teams.
+    var nflTeams: [String] = ["Falcons", "Patriots"] //TO DO finish all 32 teams.
 
-  var rushingProbabilityArray:[rushingProbability](32) //array of all the teams
+    private var rushingProbabilityArray:[playerProbabilityStat] //array of all the teams
   //Holds probabilities
 
-  //initial empty constructor for the class
-  init()
-  {}
-
-  //setup constructor with running probability
+    //setup constructor with running probability
   //initialize with an incoming array of probability.
   init(probabilityArray: [Float])
   {
@@ -39,13 +35,13 @@ class initProbabiltyArray
   //return 0 or -1...0 returns correct.
   func updateRushingProbability(teamToChange: String, newProbability: Float) -> Int
   {
-    var ret;
+    var retVal: Int
     for(var i = 0; i < 32; i++) //find the team and get teh index.
     {
       if(nflTeams[i] == teamToChange)
       {
-        ret = updateProbability(newProbability)
-        if(ret == -1)
+        retVal = updateProbability(newProbability, index:i)
+        if(retVal == -1)
         {
           return (-1) //could not chnage value
         }
